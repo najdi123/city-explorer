@@ -24,18 +24,18 @@ const Map: React.FC = () => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="relative">
       <MapContainer
         center={coordinates || [51.505, -0.09]}
         zoom={13}
         scrollWheelZoom={true}
         zoomControl={true}
-        style={{ height: "100vh" }}
+        className="h-screen" // Replace inline style with Tailwind's full-height screen
       >
         {/* Dynamically select the tile layer */}
         <TileLayer
-          url={tileLayers[tileLayer]} // Fixed type error
-          attribution="&copy; OpenStreetMap contributors"
+          url={tileLayers[tileLayer]}
+          attribution="&copy; OpenStreetMap contributors & ESRI"
         />
         {coordinates && (
           <Marker position={coordinates}>
@@ -47,47 +47,28 @@ const Map: React.FC = () => {
       </MapContainer>
 
       {/* Layer Switch Buttons */}
-      <div
-        style={{
-          position: "absolute",
-          top: 10,
-          right: 10,
-          zIndex: 1000,
-          background: "white",
-          padding: "10px",
-          borderRadius: "8px",
-          boxShadow: "0 2px 6px rgba(0, 0, 0, 0.3)",
-        }}
-      >
+      <div className="absolute top-2 right-2 z-1000 bg-white p-3 rounded-lg shadow-lg">
         <button
           onClick={() => setTileLayer("light")}
-          style={{
-            display: "block",
-            marginBottom: "5px",
-            padding: "5px",
-            background: tileLayer === "light" ? "#ddd" : "#fff",
-          }}
+          className={`block mb-2 px-4 py-2 rounded ${
+            tileLayer === "light" ? "bg-gray-200" : "bg-white"
+          }`}
         >
           Light
         </button>
         <button
           onClick={() => setTileLayer("dark")}
-          style={{
-            display: "block",
-            marginBottom: "5px",
-            padding: "5px",
-            background: tileLayer === "dark" ? "#ddd" : "#fff",
-          }}
+          className={`block mb-2 px-4 py-2 rounded ${
+            tileLayer === "dark" ? "bg-gray-200" : "bg-white"
+          }`}
         >
           Dark
         </button>
         <button
           onClick={() => setTileLayer("satellite")}
-          style={{
-            display: "block",
-            padding: "5px",
-            background: tileLayer === "satellite" ? "#ddd" : "#fff",
-          }}
+          className={`block px-4 py-2 rounded ${
+            tileLayer === "satellite" ? "bg-gray-200" : "bg-white"
+          }`}
         >
           Satellite
         </button>
