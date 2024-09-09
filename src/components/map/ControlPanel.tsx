@@ -8,7 +8,7 @@ const ControlPanel: React.FC<{
   tileLayer: TileLayerType;
 }> = ({ setTileLayer, tileLayer }) => {
   return (
-    <div className="absolute top-2 right-2 z-[1000] bg-white p-3 rounded-lg shadow-lg">
+    <div className="absolute bottom-2 right-2 z-[1000] bg-white p-3 rounded-lg shadow-lg">
       <button
         onClick={() => setTileLayer("light")}
         className={`block mb-2 px-4 py-2 rounded ${
