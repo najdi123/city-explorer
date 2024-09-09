@@ -4,13 +4,14 @@ import "leaflet/dist/leaflet.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import RecenterMap from "./RecenterMap";
+import ControlPanel from "./ControlPanel";
 import L from "leaflet"; // Import Leaflet
+import { ZoomControl } from "react-leaflet";
 
 // Import the default marker images
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import markerRetina from "leaflet/dist/images/marker-icon-2x.png";
-import ControlPanel from "./ControlPanel";
 
 // Fix the marker icon issue by setting the default icon
 const DefaultIcon = L.icon({
@@ -48,7 +49,7 @@ const Map: React.FC = () => {
         center={coordinates || [51.505, -0.09]}
         zoom={13}
         scrollWheelZoom={true}
-        zoomControl={true}
+        zoomControl={false} // Disable the default zoom control
         className="h-screen"
       >
         <TileLayer
@@ -67,6 +68,9 @@ const Map: React.FC = () => {
             <RecenterMap coordinates={coordinates} />
           </>
         )}
+
+        {/* Custom ZoomControl positioned at bottom-right */}
+        <ZoomControl position="bottomleft" />
       </MapContainer>
 
       {/* Theme Switch Buttons */}
