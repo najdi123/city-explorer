@@ -69,7 +69,7 @@ const Map: React.FC = () => {
           </>
         )}
 
-        {/* Custom ZoomControl positioned at bottom-right */}
+        {/* Custom ZoomControl positioned at bottom-left */}
         <ZoomControl position="bottomleft" />
       </MapContainer>
 
